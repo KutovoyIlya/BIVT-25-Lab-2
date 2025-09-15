@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Lab2
 {
@@ -12,9 +13,19 @@ namespace Lab2
 
             // code here
 
+            int counter = 2;
+            while (counter <= n)
+            {
+                double x = counter;
+                double dr = x / (x + 1);
+                Console.WriteLine(dr);
+                answer += dr;
+                counter += 1;
+            }
+
             // end
 
-            return answer;
+                return answer;
         }
         public double Task2(int n, double x)
         {
