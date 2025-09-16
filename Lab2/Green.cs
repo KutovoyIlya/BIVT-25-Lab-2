@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Lab2
 {
@@ -11,7 +11,10 @@ namespace Lab2
             double answer = 0;
 
             // code here
-
+            for(int i = 2; i <= n; i+=2)
+            {
+                answer += ((double)i / (double)(i + 1));
+            }
             // end
 
             return answer;
@@ -21,7 +24,13 @@ namespace Lab2
             double answer = 0;
 
             // code here
-
+            double now = 1;
+            answer += now;
+            for(int i = 1; i <= n; i++)
+            {
+                now /= x;
+                answer += now;
+            }
             // end
 
             return answer;
@@ -31,7 +40,13 @@ namespace Lab2
             long answer = 0;
 
             // code here
-
+            long now = 1;
+            answer += now;
+            for(int i = 1; i <= n; i++)
+            {
+                now *= i;
+                answer += now;
+            }
             // end
 
             return answer;
@@ -41,7 +56,14 @@ namespace Lab2
             double answer = 0;
 
             // code here
-
+            double t = 1;
+            double defx = 1;
+            for(int i = 1; Math.Abs(t) > E; i++)
+            {
+                defx *= x;
+                t = Math.Sin(i * defx);
+                answer += t;
+            }
             // end
 
             return answer;
@@ -51,7 +73,15 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            int i = 1;
+            double xn = 1 / x, xn1 = 1;
+            while(Math.Abs(xn1 - xn) > E)
+            {
+                xn1 /= x;
+                xn /= x;
+                i += 1;
+            }
+            answer = i;
             // end
 
             return answer;
@@ -61,7 +91,13 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            int elem = 1, i = 0;
+            while (elem < limit)
+            {
+                elem *= 2;
+                answer += elem;
+                i++;
+            }
             // end
 
             return answer;
