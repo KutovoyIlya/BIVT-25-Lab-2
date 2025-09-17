@@ -108,7 +108,12 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            int i = 0;
+            for(;L > Da; i++)
+            {
+                L /= 2;
+            }
+            answer = i;
             // end
 
             return answer;
@@ -126,3 +131,4 @@ namespace Lab2
         }
     }
 }
+
