@@ -5,7 +5,7 @@
         public static void Main()
         {
             Green green = new Green();
-            Console.WriteLine(green.Task1(20));
+            Console.WriteLine(green.Task3(25));
            
         }
     }

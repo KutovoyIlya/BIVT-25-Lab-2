@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Metrics;
 using System.Security.Cryptography.X509Certificates;
 
 namespace Lab2
@@ -20,7 +21,7 @@ namespace Lab2
                 double dr = x / (x + 1);
                 Console.WriteLine(dr);
                 answer += dr;
-                counter += 1;
+                counter += 2;
             }
 
             // end
@@ -32,6 +33,15 @@ namespace Lab2
             double answer = 0;
 
             // code here
+            answer = 1;
+            double lim = n;
+
+            double coun = 1;
+            while (coun <= lim)
+            {
+                answer += (1 / (Math.Pow(x, coun)));
+                coun += 1;
+            }
 
             // end
 
@@ -43,15 +53,40 @@ namespace Lab2
 
             // code here
 
+            
+            long fact = 1;
+            int count = 1;
+            while (count <= n)
+            {
+                
+                Console.WriteLine(fact);
+                answer += fact;
+                count += 1;
+                fact *= count;
+
+
+            }
+
             // end
 
-            return answer;
+            return answer+1;
         }
         public double Task4(double x)
         {
             double answer = 0;
 
             // code here
+            int mnoch = 1;
+            double res_step = x;
+            double res = Math.Sin(x);
+            while (Math.Abs(res) >= E)
+            {
+                Console.WriteLine(res);
+                answer += res;
+                mnoch += 1;
+                res_step = res_step * x;
+                res = Math.Sin(res_step * mnoch);
+            }
 
             // end
 
