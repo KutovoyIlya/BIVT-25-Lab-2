@@ -1,5 +1,6 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Formats.Asn1;
 using System.Runtime.InteropServices;
 
 namespace Lab2
@@ -10,8 +11,16 @@ namespace Lab2
         public int Task1(int n, int p, int h)
         {
             int answer = 0;
-
             // code here
+            int c = 0;
+            int an = 0;
+            while (c != n)
+            {
+                c++;
+                an = p + ((c - 1) * h);
+                answer = answer + an*an;
+
+            }
 
             // end
 
@@ -38,25 +47,8 @@ namespace Lab2
             double answer = 0;
 
             // code here
-            double before1 = 3;
-            double before2 = 2;
-            double before3 = 2;
-            double before4 = 1;
-            if (Math.Abs(before1 / before2) - Math.Abs(before3 / before4) < Math.Pow(10, -4))
-            {
-                answer = before1 / before2;
-            }
-            else
-            {
-                double be1 = before1;
-                double be2 = before2;
-                before1 = before1 + before3;
-                before2 = before2 + before4;
-                before3 = be1;
-                before4 = be2;
-            }
-            // end
 
+            // end
             return answer;
         }
         public int Task4(double b, double q)
@@ -64,9 +56,16 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            int ca = 0;
+            double a = 10000;
+            while (Math.Abs(a) >= 0.00000001)
+            {
+                ca++;
+                a = b * (Math.Pow(q, ca) - q);
 
+            }
             // end
-
+            answer = ca;
             return answer;
         }
         public int Task5(int a, int b)
