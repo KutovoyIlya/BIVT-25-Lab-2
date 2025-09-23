@@ -23,7 +23,12 @@ namespace Lab2
             int remainder = 0;
 
             // code here
-
+            while (a >= b)
+            {
+                a = a - b;
+                quotient++;
+            }
+            remainder = a;
             // end
 
             return (quotient, remainder);
@@ -33,7 +38,23 @@ namespace Lab2
             double answer = 0;
 
             // code here
-
+            double before1 = 3;
+            double before2 = 2;
+            double before3 = 2;
+            double before4 = 1;
+            if (Math.Abs(before1 / before2) - Math.Abs(before3 / before4) < Math.Pow(10, -4))
+            {
+                answer = before1 / before2;
+            }
+            else
+            {
+                double be1 = before1;
+                double be2 = before2;
+                before1 = before1 + before3;
+                before2 = before2 + before4;
+                before3 = be1;
+                before4 = be2;
+            }
             // end
 
             return answer;
@@ -91,4 +112,5 @@ namespace Lab2
             return (SS, SY);
         }
     }
+
 }
