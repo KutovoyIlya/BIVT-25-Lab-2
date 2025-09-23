@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 
 namespace Lab2
 {
@@ -11,7 +11,11 @@ namespace Lab2
             double answer = 0;
 
             // code here
-
+            int i = 2;
+            for (; i <= n; i = i + 2)
+            {
+                answer += ((double)i / (i + 1));
+            }
             // end
 
             return answer;
@@ -21,7 +25,15 @@ namespace Lab2
             double answer = 0;
 
             // code here
+            int i = 1;
+            answer = 1;
+            double x2 = x;
+            for (; i <= n; i++)
+            {
+                answer += 1 / x;
+                x *= x2;
 
+            }
             // end
 
             return answer;
