@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Formats.Asn1;
 using System.Runtime.InteropServices;
 
@@ -47,25 +48,38 @@ namespace Lab2
             double answer = 0;
 
             // code here
-
+            double c1 = 1;
+            double c2 = 1;
+            double c3 = 2;
+            double c4 = 1;
+            double c5 = 3;
+            double c6 = 2;
+            while (Math.Abs(c5 / c6 - c3 / c4) >= Math.Pow(10,-4))
+            {
+                c1 = c3;
+                c2 = c4;
+                c3 = c5;
+                c4 = c6;
+                c5 = c1 + c3;
+                c6 = c2 + c4;
+                answer = c5 / c6;
+            }
             // end
-            return answer;
+                return answer;
         }
         public int Task4(double b, double q)
         {
             int answer = 0;
 
             // code here
-            int ca = 0;
-            double a = 10000;
-            while (Math.Abs(a) >= 0.00000001)
+            int n = 1;
+            while (Math.Abs(b) >= 0.0001)
             {
-                ca++;
-                a = b * (Math.Pow(q, ca) - q);
-
+                b = b * q;
+                n++;
             }
-            // end
-            answer = ca;
+            answer = n;
+                // end
             return answer;
         }
         public int Task5(int a, int b)
@@ -73,6 +87,17 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            long number = a;
+            while (b > 0)
+            {
+                number *= b;
+                b--;
+            }
+            while (number >= 10)
+            {
+                number /= 10;
+                answer++;
+            }
 
             // end
 
@@ -83,7 +108,13 @@ namespace Lab2
             long answer = 0;
 
             // code here
-
+            long p = 1;
+            for (int i = 1; i < 63; i++)
+            {
+                p *= 2;
+                answer += p;
+            }
+            answer = answer / (15 * 1000 * 500);
             // end
 
             return answer;
@@ -92,10 +123,29 @@ namespace Lab2
         public int Task7(double S, double d)
         {
             int answer = 0;
-
             // code here
-
-            // end
+            double ok = S;
+            int m = 0;
+            double p = 0;
+            while (S < ok * 2)
+            {
+                if (ok * 2 < S + (S * d / 100))
+                {
+                    S += S * d / 100;
+                    m += 12;
+                }
+                else
+                {
+                    if (m % 12 == 0)
+                    {
+                        p = S * d / 100 / 12;
+                    }
+                    S += p;
+                    m++;
+                }
+            }
+            answer = m;
+                // end
 
             return answer;
         }
