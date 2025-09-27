@@ -43,7 +43,14 @@ namespace Lab2
             long answer = 0;
 
             // code here
+            long b = 1;
+            answer += 1;
+            for (int i = 1; i <= n; i++)
+            {
+                b *= i;
+                answer += b;
 
+            }
             // end
 
             return answer;
@@ -53,6 +60,14 @@ namespace Lab2
             double answer = 0;
 
             // code here
+            int i = 1;
+            double s1 = x;
+            while (Math.Abs(Math.Sin(x * i)) >= E)
+            {
+                answer += Math.Sin(i * x);
+                x *= s1;
+                i++;
+            }
 
             // end
 
@@ -63,7 +78,17 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            int i = 1;
+            double s1 = x;
+            double s2 = 1;
+            const double E = 1e-4;
+            while ((Math.Abs((1 / x) - (1 / s2))) >= E)
+            {
+                i++;
+                x *= s1;
+                s2 *= s1;
+            }
+            answer = i;
             // end
 
             return answer;
@@ -73,7 +98,15 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            double ch = 0, zn = 0;
+            int elem = 1, i = 0;
+            while (elem < limit)
+            {
+                elem *= 2;
+                answer += elem;
+                i++;
+            }
+                
             // end
 
             return answer;
@@ -84,7 +117,11 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            while (L >= Da)
+            {
+                L /= 2;
+                answer += 1;
+            }
             // end
 
             return answer;
@@ -95,7 +132,21 @@ namespace Lab2
             double SY = 0;
 
             // code here
-
+            for (double x = a; x <= b + E; x += h)
+            {
+                SY += Math.Atan(x);
+                int si = -1;
+                double min = 1;
+                for (int i = 0; ;i++)
+                {
+                    double s = (-1) * si * x * min / (2 * i + 1);
+                    SS += s;
+                    si *= (-1);
+                    min *= (x * x);
+                    if (Math.Abs(s) < E) break;
+                    
+                }
+            }
             // end
 
             return (SS, SY);
