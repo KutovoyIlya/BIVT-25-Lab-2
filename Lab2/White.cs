@@ -1,4 +1,6 @@
-﻿namespace Lab2
+﻿using System.Runtime.ExceptionServices;
+
+namespace Lab2
 {
     public class White
     {
@@ -8,7 +10,10 @@
             int answer = 0;
 
             // code here
-
+            for (int i = 1; i<=n; i++)
+            {
+                answer += 3 * i - 1;
+            }
             // end
 
             return answer;
@@ -18,7 +23,10 @@
             double answer = 0;
 
             // code here
-
+            for (int i = 1; i<=n; i++)
+            {
+                answer += 1.0 / i;
+            }
             // end
 
             return answer;
@@ -28,7 +36,11 @@
             long answer = 0;
 
             // code here
-
+            answer = 1;
+            for (int i = 1; i<=n; i++)
+            {
+                answer *= i;
+            }
             // end
 
             return answer;
@@ -38,7 +50,11 @@
             long answer = 0;
 
             // code here
-
+            answer = 1;
+            for (int i = 0; i<b; i++)
+            {
+                answer *= a;
+            }
             // end
 
             return answer;
@@ -48,7 +64,12 @@
             int answer = 0;
 
             // code here
-
+            int p = 1;
+            for (int i = 1; p<=L; i+=3)
+            {
+                p *= i;
+                answer = i;
+            }
             // end
 
             return answer;
@@ -58,7 +79,11 @@
             double answer = 0;
 
             // code here
-
+            answer = 1;
+            for (double s = x * x; s>=E; s*=(x*x))
+            {
+                answer += s;
+            }
             // end
 
             return answer;
@@ -69,7 +94,12 @@
             int answer = 0;
 
             // code here
-
+            int sum = 0;
+            while (sum<n)
+            {
+                answer++;
+                sum += answer;
+            }
             // end
 
             return answer;
@@ -80,7 +110,13 @@
             const double R = 6371.0; // радиус Земли, км
 
             // code here
-
+            double h = 0;
+            answer = 0;
+            do
+            {
+                h += v;
+                answer += 1;
+            } while (Math.Sqrt(((R + h) * (R + h)) - R * R) <= L);
             // end
 
             return answer;
