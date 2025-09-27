@@ -118,8 +118,8 @@ namespace Lab2test
         public void Test6()
         {
             // Arrange
-            var answer = new ulong[] { 1229782938247 };
-            var test = new ulong[answer.Length];
+            var answer = new long[] { 1229782938247 };
+            var test = new long[answer.Length];
             // Act
             for (int i = 0; i < answer.Length; i++)
             {
