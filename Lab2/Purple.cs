@@ -90,19 +90,14 @@ namespace Lab2
 
             return answer;
         }
-        public ulong Task6()
+        public long Task6()
         {
-            ulong answer = 0;
-            ulong s = 0;
-            ulong k = 1;
-
-            for (int i = 1; i <= 64; i++)
-            {
-                s += k;
-                k *= 2;
-            }
+            long answer = 0;
             
-            answer = s / 15000000;
+            double s = Math.Pow(2, 64) - 1;
+            double k = s / 15.0 / 1000000.0;
+
+            answer = (long)k;
 
             return answer;
         }
@@ -136,9 +131,32 @@ namespace Lab2
             double SS = 0;
             double SY = 0;
 
-            // code here
+            int steps = (int)Math.Round((b - a) / h) + 1;
+            
+            for (int i = 0; i < steps; i++)
+            {
+                double x = a + i * h;
+                
+                if (x > b)
+                {
+                    break;
+                }
 
-            // end
+                double summa = 0;
+                int I = 0;
+                double first = 1;
+
+                while (Math.Abs(first) >= E)
+                {
+                    summa += first;
+                    I++;
+                    first *= (-1) * x * x / ((2 * I - 1) * (2 * I));
+                }
+
+                double y = Math.Cos(x);
+                SS += summa;
+                SY += y;
+            }
 
             return (SS, SY);
         }
