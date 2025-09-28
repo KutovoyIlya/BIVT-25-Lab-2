@@ -46,30 +46,23 @@ namespace Lab2
             double answer = 0;
 
             // code here
-            List<double> high = new List<double>();
-            List<double> low = new List<double>();
 
-            double current = 2;
-            double last = 0;
-            high.Add(1);
-            high.Add(2);
-            low.Add(1);
-            low.Add(1);
-            while (Math.Abs(current - last) < E)
+            const double e = 0.0001;
+            double old_num = 2;
+            double old_den = 1;
+            double new_num = 3;
+            double new_den = 2;
+            while (true)
             {
-                high.Add(high[high.Count - 2] + high[high.Count - 1]);
-                low.Add(low[low.Count - 2] + low[low.Count - 1]);
-                last = current;
-                current = high[high.Count - 1] / low[low.Count - 1];
-            }
-            answer = current;
-            foreach (int i in high)
-            {
-                Console.WriteLine(i);
-            }
-            foreach (int j in low)
-            {
-                Console.WriteLine(j);
+                new_num = old_num + new_num;
+                new_den = old_den + new_den;
+                old_num = new_num - old_num;
+                old_den = new_den - old_den;
+                if (Math.Abs((new_num / new_den) - (old_num / old_den)) < e)
+                {
+                    answer = (new_num / new_den);
+                    break;
+                }
             }
             // end
             return answer;
@@ -113,16 +106,17 @@ namespace Lab2
         {
             long answer = 0;
 
-            // code here
-            //int a = 1;
-            //long b = 1;
-            //while (a <= 64)
-            //{
-            //    a++;
-            //    b *= 2;
-            //}
-            //long d = Math.Floor((double)b / 15000000);
-            //answer = d;
+            //code here
+            int a = 1;
+            double b = 1;
+            while (a <= 64)
+            {
+                a++;
+                b *= 2;
+            }
+            long d = (long)Math.Floor((double)b / 15000000);
+            //long d = (long)Convert.ToInt64(Math.Floor((double)b / 15000000));
+            answer = d;
             //end
 
             return answer;
@@ -162,22 +156,48 @@ namespace Lab2
             double SY = 0;
 
             // code here
-            double MyPow(double a, double b)
-            {
-                double c = a;
-                for (int i = 2; i < b; i++)
-                {
-                    c *= a;
-                }
-                return c;
-            }
-            double current = 0;
+            //double e = 0.0001;
+            //for (double x = a; x <= b + e; x += h)
+            //{
+            //    int i = 1;
+            //    double current = 1;
+            //    double sum = 0;
+            //    do
+            //    {
+            //        current = (-current) * ((x * x) / ((2 * i) * (2 * i - 1)));
+            //        sum += current;
+            //        i++;
+            //    } while (Math.Abs(current) >= 0.0001);
+            //    SS += sum;
+            //    SY += Math.Cos(x);
+            //}
 
-            for (double x = a; x <= b; x += h)
+            double e = 0.0001;
+            static long Factorial(int n)
             {
-                
-;
+                long res = 1;
+                for (int i = 1; i <= n; i++)
+                {
+                    res *= i;
+                }
+                return res;
             }
+            for (double x = a; x <= b + e; x += h)
+            {
+                double SX = 0;
+                SY += Math.Cos(x);
+
+                for (int i = 0; i < 100; i++)
+                {
+                    SX = Math.Pow(-1, i) * Math.Pow(x, 2 * i) / Factorial(2 * i);
+                    SS += SX;
+                    if (Math.Abs(SX) < e)
+                        break;
+
+                }
+                ;
+            }
+
 
             // end
 
