@@ -57,8 +57,8 @@ namespace Lab2
             double answer = 0;
 
             // code here
-            int n = 4;
-            double num = 0;
+            int n = 0;
+            double num = 1;
             while (Math.Abs(num) >= E)
             {
                 n++;
@@ -139,7 +139,7 @@ namespace Lab2
                     num = Math.Pow(-1, i) * Math.Pow(x, 2 * i + 1) / (2 * i + 1);
                     i++;
                     SS += num;
-                }while (Math.Abs(num) > E);
+                }while (Math.Abs(num) >= E);
             }
             // end
 
