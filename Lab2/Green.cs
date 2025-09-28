@@ -134,7 +134,23 @@ namespace Lab2
             double SY = 0;
 
             // code here
+            for (double x = a; x <= b; x += h)
+            {
+                SY += Math.Atan(x);
+                int i = 0;
+                double num = 0;
+                while (true)
+                {
+                    num = Math.Pow(-1, i) * Math.Pow(x, 2 * i + 1) / (2 * i + 1);
+                    i++;
+                    SS += num;
+                    if (Math.Abs(num) >= E)
+                    {
+                        break;
+                    }
 
+                }
+            }
             // end
 
             return (SS, SY);
