@@ -43,10 +43,11 @@ namespace Lab2
             for (int i = 1; i <= n; i ++)
             {
               
-                factorial *= i;
+                factorial = factorial * i;
                 answer += factorial;
 
-                }
+            }
+            answer += 1;
             // end
 
             return answer;
@@ -58,15 +59,11 @@ namespace Lab2
             // code here
             int n = 4;
             double num = 0;
-
-            if (Math.Abs(x) < 1)
+            while (Math.Abs(num) >= E)
             {
-                while (Math.Abs(num) >= E)
-                {
-                    n++;
-                    num = Math.Sin(n * (Math.Pow(x, n)));
-                    answer += num;
-                }
+                n++;
+                num = Math.Sin(n * (Math.Pow(x, n)));
+                answer += num;
             }
             // end
 
@@ -78,19 +75,17 @@ namespace Lab2
 
             // code here
             int n = 1;
-            if (Math.Abs(x) > 1)
+            while (true)
             {
-                while (true)
+                double chi1 = 1 / Math.Pow(x, n);
+                double chi2 = 1 / Math.Pow(x, n - 1);
+                if (Math.Abs((chi1) - (chi2)) < E)
                 {
-                    double chi1 = 1 / Math.Pow(x, n);
-                    double chi2 = 1 / Math.Pow(x, n - 1);
-                    if (chi1 - chi2 < E)
-                    {
-                        break;
-                    }
-                    n ++;
+                    break;
                 }
+                n ++;
             }
+            
             answer = n;
 
             // end
@@ -139,17 +134,12 @@ namespace Lab2
                 SY += Math.Atan(x);
                 int i = 0;
                 double num = 0;
-                while (true)
+                do
                 {
                     num = Math.Pow(-1, i) * Math.Pow(x, 2 * i + 1) / (2 * i + 1);
                     i++;
                     SS += num;
-                    if (Math.Abs(num) >= E)
-                    {
-                        break;
-                    }
-
-                }
+                }while (Math.Abs(num) > E);
             }
             // end
 
