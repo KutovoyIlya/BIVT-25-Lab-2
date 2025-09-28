@@ -97,9 +97,22 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            int n = 2;
 
+            double zhach_1 = x*x;
+            double zhach_2 =  x;
+            double razn = Math.Abs((1 / zhach_1) - (1 / zhach_2));
+            while (razn >= E)
+            {
+                n += 1;
+                zhach_1 *= x;
+                zhach_2 *= x;
+                razn = Math.Abs((1 / zhach_1) - (1 / zhach_2));
+
+            }
+            answer = n;
             // end
-
+            
             return answer;
         }
         public int Task6(int limit)
@@ -107,6 +120,15 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            int elem = 1;
+            int i = 0;
+            while (elem < limit)
+            {
+                elem *= 2;
+                answer += elem;
+                i++;
+            }
+            
 
             // end
 
@@ -118,7 +140,11 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            while (L > Da)
+            {
+                L /= 2;
+                answer += 1;
+            }
             // end
 
             return answer;
@@ -127,10 +153,76 @@ namespace Lab2
         {
             double SS = 0;
             double SY = 0;
+            double E = 1e-6;
 
             // code here
 
+            if (h == 0) throw new ArgumentException("h не может быть 0");
+           
+            bool increasing = h > 0;
+
+           
+            double tol = Math.Abs(h) * 1e-8;
+            double x = a;
+
+            while (increasing ? x <= b + tol : x >= b - tol)
+            {
+                double sValue;
+                double absX = Math.Abs(x);
+
+                if (absX <= 1.0)
+                {
+                    double term = x;       
+                    double powNumer = x;     
+                    double mult = -x * x;     
+                    int i = 0;
+                    double sum = 0.0;
+
+                    while (true)
+                    {
+                        double denom = 2 * i + 1;
+                        term = powNumer / denom;
+                        if (Math.Abs(term) < E) break;
+                        sum += term;
+                        powNumer *= mult;
+                        i++;
+                        if (i > 1000000) break;
+                    }
+                    sValue = sum;
+                }
+                else
+                {
+                    double inv = 1.0 / x;
+                    double powNumer = inv;   
+                    double mult = -inv * inv;
+                    int i = 0;
+                    double sumInv = 0.0;
+                    while (true)
+                    {
+                        double denom = 2 * i + 1;
+                        double term = powNumer / denom;
+                        if (Math.Abs(term) < E) break;
+                        sumInv += term;
+                        powNumer *= mult;
+                        i++;
+                        if (i > 1000000) break;
+                    }
+                    sValue = Math.Sign(x) * Math.PI / 2 - sumInv;
+ 
+                }
+
+                double yValue = Math.Atan(x);
+
+                SS += sValue;
+                SY += yValue;
+
+                x += h;
+            }
+            
+
+    
             // end
+   
 
             return (SS, SY);
         }
