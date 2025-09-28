@@ -129,7 +129,7 @@ namespace Lab2
             double SY = 0;
 
             // code here
-            for (double x = a; x <= b; x += h)
+            for (double x = a; x <= b + 1e-12; x += h)
             {
                 SY += Math.Atan(x);
                 int i = 0;
