@@ -139,7 +139,7 @@ namespace Lab2
                     num = Math.Pow(-1, i) * Math.Pow(x, 2 * i + 1) / (2 * i + 1);
                     i++;
                     SS += num;
-                }while (Math.Abs(num) >= E);
+                } while (Math.Abs(num) >= E);
             }
             // end
 
