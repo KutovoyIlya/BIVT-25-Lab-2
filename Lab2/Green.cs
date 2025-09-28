@@ -26,11 +26,9 @@ namespace Lab2
 
             // code here
             double xx = x;
-            for (int i = 1; i <= n; i++)
+            for (int i = 0; i <= n; i++)
             {
-                answer += 1 + (1 / xx);
-                xx = x * xx;
-
+                answer += Math.Pow(x, -i);
             }
             // end
 
@@ -38,17 +36,17 @@ namespace Lab2
         }
         public long Task3(int n)
         {
-            long answer = 1;
+            long answer = 0;
 
             // code here
-            for (int i = 0; i <= n; i ++)
+            long factorial = 1;
+            for (int i = 1; i <= n; i ++)
             {
-                if (i > 0)
-                {
-                    answer *= i;
+              
+                factorial *= i;
+                answer += factorial;
+
                 }
-                
-            }
             // end
 
             return answer;
@@ -56,18 +54,18 @@ namespace Lab2
         public double Task4(double x)
         {
             double answer = 0;
-            
+
             // code here
+            int n = 4;
+            double num = 0;
+
             if (Math.Abs(x) < 1)
             {
-                int n = 4;
-                double xx = x;
-                for (int i = 1; i < n; i++)
+                while (Math.Abs(num) >= E)
                 {
-                    answer += Math.Sin(xx);
-                    xx *= x;
-                    xx = xx * i + 1;
-
+                    n++;
+                    num = Math.Sin(n * (Math.Pow(x, n)));
+                    answer += num;
                 }
             }
             // end
@@ -79,20 +77,22 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            int n = 1;
             if (Math.Abs(x) > 1)
             {
-                int n = 1;
                 while (true)
                 {
                     double chi1 = 1 / Math.Pow(x, n);
                     double chi2 = 1 / Math.Pow(x, n - 1);
                     if (chi1 - chi2 < E)
                     {
-                        answer = n; break;
+                        break;
                     }
                     n ++;
                 }
             }
+            answer = n;
+
             // end
 
                 return answer;
