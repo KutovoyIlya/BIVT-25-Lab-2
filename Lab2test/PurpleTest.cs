@@ -1,4 +1,4 @@
-﻿namespace Lab2test
+namespace Lab2test
 {
     [TestClass]
     public sealed class PurpleTest
