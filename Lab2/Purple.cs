@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.InteropServices;
 
@@ -12,7 +12,12 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            int sum = p;
+            for (int i=0; i<n; i++)
+            {
+                answer += sum * sum;
+                sum += h;
+            }
             // end
 
             return answer;
@@ -23,7 +28,12 @@ namespace Lab2
             int remainder = 0;
 
             // code here
-
+            while (a >= b)
+            {
+                quotient++;
+                a -= b;
+            }
+            remainder = a;
             // end
 
             return (quotient, remainder);
@@ -33,6 +43,15 @@ namespace Lab2
             double answer = 0;
 
             // code here
+            double fib1 = 1;
+            double fib2 = 1;
+            double fib3 = 2;
+
+            while (Math.Abs((fib3 / fib2) - (fib2 / fib1)) > E)
+            {
+                (fib1, fib2, fib3) = (fib2, fib3, fib2 + fib3);
+            }
+            answer = fib3 / fib2;
 
             // end
 
@@ -43,7 +62,12 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            answer++;
+            while (Math.Abs(b) >= E)
+            {
+                answer++;
+                b *= q;
+            }
             // end
 
             return answer;
@@ -53,7 +77,17 @@ namespace Lab2
             int answer = 0;
 
             // code here
-
+            long number = a;
+            while (b > 0)
+            {
+                number *= b;
+                b--;
+            }
+            while (number >= 10)
+            {
+                number /= 10;
+                answer++;
+            }
             // end
 
             return answer;
@@ -63,7 +97,12 @@ namespace Lab2
             long answer = 0;
 
             // code here
-
+            double tonna=0;
+            for (int i=0; i<64; i++)
+            {
+                tonna += Math.Pow(2, i)/15000000.0;
+            }
+            answer = Convert.ToInt64(Math.Round(tonna));
             // end
 
             return answer;
@@ -74,7 +113,22 @@ namespace Lab2
             int answer = 0;
 
             // code here
+            double sum = S;
+            double procent = S * d / 100.0 / 12.0;
+            int month = 0;
 
+            while (sum < 2 * S)
+            {
+                sum += procent;
+                answer++;
+                month++;
+
+                if (month == 12)
+                {
+                    procent = sum * d / 100.0 / 12.0;
+                    month = 0;
+                }
+            }
             // end
 
             return answer;
@@ -85,6 +139,24 @@ namespace Lab2
             double SY = 0;
 
             // code here
+            for (double x = a; x <= b + E; x += h)
+            {
+                double s = 0;
+                int i = 0;
+                double count = 1;
+                double fact = 1;
+                while (Math.Abs(count) >= E)
+                {
+                    count = Math.Pow(-1, i)*(Math.Pow(x, 2*i))/fact;
+                    s += count;
+                    i++;
+                    fact *= 2*i;
+                    fact *= 2*i-1;
+                }
+
+                SY += Math.Cos(x);
+                SS += s;
+            }
 
             // end
 
