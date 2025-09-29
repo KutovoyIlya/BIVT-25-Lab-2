@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq.Expressions;
+using System.Reflection.PortableExecutable;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
+using System.Transactions;
 
 namespace Lab2
 {
@@ -154,7 +157,20 @@ namespace Lab2
             double SY = 0;
 
             // code here
-
+            for (double x=a; x<=b+E; x+=h)
+            {
+                SY += (1 + (2.0 * x * x)) * Math.Exp(x*x);
+                double it = 1, fac=1,um=1;
+                int i = 0;
+                while (Math.Abs(it) >= E)
+                {
+                    it = ((2 * i + 1) * um )/ fac;
+                    SS += it;
+                    i++;
+                    fac *= i;
+                    um *= x*x;
+                }
+            }
             // end
 
             return (SS, SY);
