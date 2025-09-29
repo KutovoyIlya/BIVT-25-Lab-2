@@ -162,40 +162,25 @@ namespace Lab2
         }
 
 
-        private long Factorial(int n)
-        {
-            long factorial = 1;
-            for (int z = 1; z <= n; z += 1)
-            {
-                factorial *= z;
-            }
-            return factorial;
-        }
         public (double SS, double SY) Task8(double a, double b, double h)
         {
             double SS = 0;
             double SY = 0;
 
             // code here
-            const double E = 0.0001;
-            for (double x = a; x <= b; x += h)
+            for (double x = a; x <= b + E; x += h)
             {
-                SY += (1 + (2 * x * x)) * Math.Exp(x * x);
-                double factorial = 1;
-                double item = 1;
+                SY += (1 + (2.0 * x * x)) * Math.Exp(x * x);
+                double it = 1, fac = 1, um = 1;
                 int i = 0;
-                while (Math.Abs(item) >= E)
+                while (Math.Abs(it) >= E)
                 {
-                    double xPow = 1;
-                    for (int y = 0; y < 2 * i; y += 1)
-                    {
-                        xPow *= x;
-                    }
-                    item = (double)((2 * i + 1) * xPow) / Factorial(i);
-                    i += 1;
-                    SS += item;
+                    it = ((2 * i + 1) * um) / fac;
+                    SS += it;
+                    i++;
+                    fac *= i;
+                    um *= x * x;
                 }
-
             }
             // end
 
