@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Formats.Asn1;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Lab2
@@ -90,29 +91,53 @@ namespace Lab2
         public int Task7(double S, double d)
         {
             double Ss = S;
+            double YP = Ss * (d / 100);
             int n = 0;
-            double YP = 0;
-            
-            while (Ss < 2 * S)
+
+            while (Ss / S < 2)
             {
-                if (n == 0 || n % 12 == 0)
+                if (n % 12 == 0)
                 {
-                    YP = Ss * d;
+                    YP = Ss * (d / 100);
                 }
-                Ss += YP / 2;
+                Ss += YP / 12;
                 n++;
             }
-
             return n;
         }
         public (double SS, double SY) Task8(double a, double b, double h)
         {
             double SS = 0;
             double SY = 0;
-
-            // code here
-
-            // end
+            
+            if (h > 0)
+            {
+                for (double x = a; x <= b + 1e-12; x += h)
+                {
+                    double s = 0, t = 1;
+                    for (int i = 0; Math.Abs(t) >= E; i++)
+                    {
+                        s += t;
+                        t *= -x * x / ((2 * i + 1) * (2 * i + 2));
+                    }
+                    SS += s;
+                    SY += Math.Cos(x);
+                }
+            }
+            else if (h < 0)
+            {
+                for (double x = a; x >= b - 1e-12; x += h)
+                {
+                    double s = 0, t = 1;
+                    for (int i = 0; Math.Abs(t) >= E; i++)
+                    {
+                        s += t;
+                        t *= -x * x / ((2 * i + 1) * (2 * i + 2));
+                    }
+                    SS += s;
+                    SY += Math.Cos(x);
+                }
+            }
 
             return (SS, SY);
         }
