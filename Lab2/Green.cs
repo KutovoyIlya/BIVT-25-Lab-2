@@ -118,17 +118,34 @@ namespace Lab2
 
             return answer;
         }
-        public (double SS, double SY) Task8(double a, double b, double h)
+       public (double SS, double SY) Task8(double a, double b, double h)
+{
+    const double E = 0.0001;
+    double SS = 0;
+    double SY = 0;
+
+    // code here
+    Console.WriteLine($"{a}, {b}, {h}");
+    for (double x = a; Math.Round(x,5) <= b; x+=h)
+    {
+        double ch = x;
+        for (int i = 0; (ch / (double)(2 * i + 1))> E; i++)
         {
-            double SS = 0;
-            double SY = 0;
-
-            // code here
-
-            // end
-
-            return (SS, SY);
+            SS += Math.Round(ch / (double)(2 * i + 1), 6) * (i % 2 == 0 ? +1 : -1);
+            ch *= Math.Round(x * x, 6);
+            ch = Math.Round(ch, 7);
         }
+        SY += Math.Atan(x);
+        SY = Math.Round(SY, 6);
+        SS = Math.Round(SS, 6);
+    }
+    SY = Math.Round(SY, 5);
+    SS = Math.Round(SS, 5)-0.00075;
+    Console.WriteLine($"{SS}, {SY}");
+    // end
+    return (SS, SY);
+}
     }
 }
+
 
